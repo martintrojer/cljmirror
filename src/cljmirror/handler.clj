@@ -18,7 +18,7 @@
 (defn do-eval [code]
   (let [res (-> code :code read-string eval)]
     (println res)
-    {:body {:result res}}))
+    {:body {:result (str res)}}))
 
 (defroutes app-routes
   (GET "/" [] (page))
