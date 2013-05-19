@@ -2,7 +2,7 @@
 
 A Clojure web REPL.
 
-- Using CodeMirror for nice editing / syntax highlighter.
+- Using CodeMirror for nice editing / syntax highlighter
 - Will use local storage to remember your sessions
 
 ## Todo

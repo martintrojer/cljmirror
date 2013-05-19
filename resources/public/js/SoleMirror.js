@@ -19,16 +19,12 @@ var SoleMirror = (function() {
 			"Ctrl-Enter": function() {
 				this.clear();
 				cnsole.setOutputBlock(this);
-				var js = this.editor.getValue();
-				// var result = eval(js);
-				$.post("/eval", {code: js},
+				var code = this.editor.getValue();
+				$.post("/eval", {code: code},
 						 function(data, status) {
 							 cnsole.log("> ", data.result);
+							 cnsole.addBlock(this);
 						 });
-//				cnsole.onExec(js);
-//				if (this == cnsole.bottomBlock) {
-//					cnsole.addBlock(this);
-//				}
 			}.bind(this),
 			"Ctrl-Up": function() {
 				if (pointer == this) {
@@ -110,7 +106,7 @@ var SoleMirror = (function() {
 		this.outputBlock = null;
 		this.container = container || document.body;
 		this.log = this.log.bind(this);
-		var initialCode = txt || "/* Control-enter to execute,\n   control-up and control-down to scroll through history\n   control-space to autocomplete */\ncon.log('hello soleMirror');";
+		var initialCode = txt || ";; control-enter to execute,\n;; control-up and control-down to scroll through history\n;; control-space to autocomplete\n(+ 1 1)";
 		this.addBlock(previousFake, initialCode);
 	}
 
