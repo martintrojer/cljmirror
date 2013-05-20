@@ -5,6 +5,12 @@ A Clojure web REPL.
 - Using CodeMirror for nice editing / syntax highlighter
 - Will use local storage to remember your sessions
 
+## Usage
+
+`$ lein ring server`
+
+Direct your browser to `http://localhost:3000/`
+
 ## Todo
 
 * clojail
