@@ -11,7 +11,7 @@
    (p/include-js "js/jquery-1.9.1.min.js"
                  "js/codemirror-compressed.js" "js/SoleMirror.js"
                  "js/cljmirror.js")
-   (p/include-css "css/CodeMirror.css" "css/SoleMirror.css")
+   (p/include-css "css/codemirror.css" "css/SoleMirror.css")
    [:h1 "Try Clojure"]
    [:div#console]))
 

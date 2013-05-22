@@ -14,7 +14,7 @@ var SoleMirror = (function() {
       };
       this.editor = CodeMirror(editorDiv, {
         value: txt,
-        mode:  "javascript",
+        mode:  "clojure",
         extraKeys: {
          "Ctrl-Enter": function() {
             this.clear();
