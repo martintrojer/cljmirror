@@ -23,7 +23,7 @@ $(document).ready(
 													  var line = cm.getCursor().line
 													  var cnt = cm.lineCount()-1
 													  if (cnt <= line) {
-														  cm.setValue(cm.getValue()+"\n\n");
+														  cm.setValue(cm.getValue()+"\n");
 													  }
 													  cm.addLineWidget(line, msg, {});
 													  cm.setCursor({line: line+1});
