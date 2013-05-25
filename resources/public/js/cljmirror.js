@@ -1,8 +1,9 @@
 $(document).ready(
 	function() {
-		var init = window.location.search.substring(1);
+		var widgets = []
 		var cm = CodeMirror(document.getElementById('console'),
 								  {value :
+									";; Ctrl-Enter to evaluate\n\n"+
 									"(defn fact [n]\n"+
 									"  (if (zero? n) 1\n"+
 									"    (* n (fact (dec n)))))\n",
@@ -16,7 +17,16 @@ $(document).ready(
 										 var code = "(do " + cm.getValue() + ")";
 										 $.post("/eval", {code: code},
 												  function(data, status) {
-													  alert(data.result);
+													  var msg = document.createElement("div");
+													  msg.className = "eval-result";
+													  msg.appendChild(document.createTextNode(" ;; " + data.result));
+													  var line = cm.getCursor().line
+													  var cnt = cm.lineCount()-1
+													  if (cnt <= line) {
+														  cm.setValue(cm.getValue()+"\n\n");
+													  }
+													  cm.addLineWidget(line, msg, {});
+													  cm.setCursor({line: line+1});
 												  });}
 									}})
 	});

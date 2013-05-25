@@ -1,3 +1,5 @@
 .CodeMirror {
   font-size: 16px;
 }
+
+.eval-result {background: #ffa}
