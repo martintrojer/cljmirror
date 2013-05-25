@@ -9,15 +9,18 @@
 (defn page []
   (p/html5
    (p/include-js "js/jquery-1.9.1.min.js"
-                 "js/codemirror-compressed.js" "js/SoleMirror.js"
+                 "js/codemirror-compressed.js"
+                 ;;"js/SoleMirror.js"
                  "js/cljmirror.js")
-   (p/include-css "css/codemirror.css" "css/SoleMirror.css")
+   (p/include-css "css/codemirror.css"
+                  ;;"css/SoleMirror.css"
+                  )
    [:h1 "Try Clojure"]
    [:div#console]))
 
 (defn do-eval [code]
   (let [res (-> code :code read-string eval)]
-    (println res)
+    (println (.trim (:code code)) "->" res)
     {:body {:result (str res)}}))
 
 (defroutes app-routes
