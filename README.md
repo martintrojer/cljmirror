@@ -3,7 +3,6 @@
 A Clojure web REPL.
 
 - Using CodeMirror for nice editing / syntax highlighter
-- Will use local storage to remember your sessions
 
 ## Usage
 
@@ -15,9 +14,11 @@ Direct your browser to `http://localhost:3000/`
 
 * clojail
 * cljs-ify the js
-* pedestal?
-
-* InstaREPL-like instead of classic REPL experience?
+* stdout/err different widget classes
+* handle re-eval "above" other widgets
+* read-only mode while waiting for reply
+* reload-page-safe
+* InstaREPL-like re-eval of all results?
 
 ## License
 
