@@ -18,9 +18,14 @@
    [:div#console]))
 
 (defn do-eval [code]
-  (let [res (-> code :code read-string eval)]
-    (println (.trim (:code code)) "->" res)
-    {:body {:result (str res)}}))
+  (let [s (java.io.StringWriter.)]
+    (binding [*out* s]
+      (try
+        {:body {:result (->> code :code read-string eval
+                             (#(if (nil? %) "nil" (str %))))
+                :out (str s)}}
+        (catch Exception e
+          {:body {:error (str e)}})))))
 
 (defroutes app-routes
   (GET "/" [] (page))

@@ -3,3 +3,5 @@
 }
 
 .eval-result {background: #ffa}
+.eval-error {background: #f00}
+.eval-out {background: #0f0}

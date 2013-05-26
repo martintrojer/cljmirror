@@ -3,6 +3,7 @@ var widgets = [];
 function removeWidgets(line) {
 	while(widgets.length > 0) {
 		var w = widgets[widgets.length - 1];
+		// TODO -- this doesn't really work. cm.getLineNumber(w) would be better
 		if (w[0] >= line) {
 			w[1].clear();
 			widgets.pop();
@@ -14,8 +15,19 @@ function evalResultFn(cm, line) {
 	return function(data, status) {
 		// TODO check status
 		var msg = document.createElement("div");
-		msg.className = "eval-result";
-		msg.appendChild(document.createTextNode(" ;; " + data.result));
+		if (data.error != null) {
+			var txt = document.createTextNode("Err " + data.err);
+			msg.className = "eval-error";
+		}
+		else if (data.out != null && data.out != "") {
+			var txt = document.createTextNode(data.out);
+			msg.className = "eval-out";
+		}
+		else {
+			var txt = document.createTextNode(" ;; " + data.result);
+			msg.className = "eval-result";
+		}
+		msg.appendChild(txt);
 		var cnt = cm.lineCount()-1
 		if (cnt <= line) cm.setValue(cm.getValue()+"\n");
 		widgets.push([line, cm.addLineWidget(line, msg, {})]);
