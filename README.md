@@ -13,9 +13,8 @@ Direct your browser to `http://localhost:3000/`
 ## Todo
 
 * clojail
+* one ns per session
 * cljs-ify the js
-* stdout/err different widget classes
-* handle re-eval "above" other widgets
 * read-only mode while waiting for reply
 * reload-page-safe
 * InstaREPL-like re-eval of all results?
