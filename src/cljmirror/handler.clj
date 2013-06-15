@@ -19,7 +19,8 @@
 
 (defn do-eval [code]
   (let [s (java.io.StringWriter.)]
-    (binding [*out* s]
+    (binding [*out* s
+              *ns* (find-ns 'user)] ;; TODO - one ns per session
       (try
         {:body {:result (->> code :code read-string eval
                              (#(if (nil? %) "nil" (str %))))
