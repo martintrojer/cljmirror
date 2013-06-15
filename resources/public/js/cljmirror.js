@@ -20,7 +20,7 @@ function evalResultFn(cm, line) {
 		// TODO check status
 		var msg = document.createElement("div");
 		if (data.error != null) {
-			var txt = document.createTextNode("Err " + data.err);
+			var txt = document.createTextNode(data.error);
 			msg.className = "eval-error";
 		}
 		// a widget can only be one line, thus this is a bit broken
