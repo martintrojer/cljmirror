@@ -1,10 +1,9 @@
-(ns cljmirror.handler
+(ns cljmirror
   (:use compojure.core)
   (:require [ring.middleware.json :as json]
             [compojure.handler :as handler]
             [compojure.route :as route]
-            [hiccup.page :as p]
-            [hiccup.element :as e]))
+            [hiccup.page :as p]))
 
 (defn page []
   (p/html5
